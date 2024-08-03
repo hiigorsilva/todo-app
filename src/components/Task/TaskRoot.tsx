@@ -1,12 +1,13 @@
-import { ReactNode } from "react"
+import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react"
+import { twMerge } from "tailwind-merge"
 
-type TaskRootProps = {
+interface TaskRootProps extends HTMLAttributes<HTMLLIElement> {
   children: ReactNode
 }
 
-export const TaskRoot = ({ children }: TaskRootProps) => {
+export const TaskRoot = ({ children, className }: TaskRootProps) => {
   return (
-    <li className="flex justify-between items-center gap-4 px-4 py-3 rounded-lg bg-zinc-800 shadow-md shadow-zinc-950/20">
+    <li className={twMerge("flex justify-between items-center gap-4 px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-50/10 shadow-md shadow-zinc-950/20", className)}>
       {children}
     </li>
   )

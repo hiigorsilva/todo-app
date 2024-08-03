@@ -1,13 +1,13 @@
-import { ReactNode } from "react"
+import { HTMLAttributes, ReactNode } from "react"
+import { twMerge } from "tailwind-merge";
 
-type TaskTextProps = {
+interface TaskTextProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode
 }
 
-export const TaskText = ({ children }: TaskTextProps) => {
+export const TaskText = ({ children, className }: TaskTextProps) => {
   return (
-    <p 
-      className="flex-1 text-ellipsis truncate line-clamp-3"
+    <p className={twMerge("flex-1 flex-wrap line-clamp-3 overflow-hidden text-ellipsis", className)}
     >{children}</p>
   )
 }
